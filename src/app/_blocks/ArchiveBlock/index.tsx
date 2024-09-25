@@ -41,8 +41,8 @@ export const ArchiveBlock: React.FC<
         selectedDocs={selectedDocs}
         categories={categories}
         limit={limit}
-        // sort="-publishedOn"
-        key={id}
+        sort="-publishedOn"
+        key={id || null}
       />
     </div>
   )

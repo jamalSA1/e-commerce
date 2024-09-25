@@ -116,7 +116,7 @@ export const CheckoutPage: React.FC<{
                 const metaImage = meta?.image
 
                 return (
-                  <Fragment key={index}>
+                  <div key={index}>
                     <CheckoutItem
                       product={product}
                       title={title}
@@ -124,7 +124,7 @@ export const CheckoutPage: React.FC<{
                       quantity={quantity}
                       index={index}
                     />
-                  </Fragment>
+                  </div>
                 )
               }
               return null
