@@ -19,9 +19,9 @@ export const LogoutPage: React.FC<{
     const performLogout = async () => {
       try {
         await logout()
-        setSuccess('Logged out successfully.')
+        setSuccess('تم تسجيل الخروج بنجاح.')
       } catch (_) {
-        setError('You are already logged out.')
+        setError('أنت مسجل الخروج بالفعل.')
       }
     }
 
@@ -34,16 +34,16 @@ export const LogoutPage: React.FC<{
         <div>
           <h1>{error || success}</h1>
           <p>
-            {'What would you like to do next?'}
+            {'ما الذي تريد أن تفعل بعد ذلك؟'}
             {typeof productsPage === 'object' && productsPage?.slug && (
-              <Fragment>
+              <>
                 {' '}
-                <Link href={`/${productsPage.slug}`}>Click here</Link>
-                {` to shop.`}
-              </Fragment>
+                <Link href={`/${productsPage.slug}`}>انقر هنا</Link>
+                {` للتسوق.`}
+              </>
             )}
-            {` To log back in, `}
-            <Link href="/login">click here</Link>
+            {` لتسجيل الدخول مرة أخرى، `}
+            <Link href="/login">انقر هنا</Link>
             {'.'}
           </p>
         </div>

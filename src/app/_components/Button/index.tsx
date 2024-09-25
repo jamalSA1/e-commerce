@@ -16,6 +16,8 @@ export type Props = {
   type?: 'submit' | 'button'
   disabled?: boolean
   invert?: boolean
+  children?: React.ReactNode
+  style?: string
 }
 
 export const Button: React.FC<Props> = ({
@@ -29,6 +31,8 @@ export const Button: React.FC<Props> = ({
   type = 'button',
   disabled,
   invert,
+  children,
+  style
 }) => {
   let el = elFromProps
 
@@ -44,8 +48,9 @@ export const Button: React.FC<Props> = ({
     .join(' ')
 
   const content = (
-    <div className={classes.content}>
+    <div className={classes.content} >
       <span className={classes.label}>{label}</span>
+      {children}
     </div>
   )
 
@@ -53,7 +58,7 @@ export const Button: React.FC<Props> = ({
 
   if (el === 'link') {
     return (
-      <Link href={href || ''} className={className} {...newTabProps} onClick={onClick}>
+      <Link href={href || ''} style={style as React.CSSProperties} className={className} {...newTabProps} onClick={onClick}>
         {content}
       </Link>
     )

@@ -8,12 +8,16 @@
   background-color: transparent;
   text-decoration: none;
   display: inline-flex;
-  padding: 12px 24px;
+  padding: 10px 24px;
   font-family: inherit;
   line-height: inherit;
   font-size: inherit;
+  border-radius: 10px;
 }
-
+.blackButton {
+  background-color: black;
+  color: white;
+}
 .content {
   display: flex;
   align-items: center;

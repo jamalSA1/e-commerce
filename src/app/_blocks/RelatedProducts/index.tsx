@@ -18,31 +18,34 @@ export type RelatedProductsProps = {
 export const RelatedProducts: React.FC<RelatedProductsProps> = props => {
   const { introContent, docs, relationTo } = props
 
+  if (!docs || docs.length === 0) {
+    console.log('No related products found'); // رسالة تصحيحية إضافية
+    return (
+      <div className={classes.relatedProducts}>
+        <p className={classes.noProducts}>لا توجد منتجات ذات صلة</p>
+      </div>
+    )
+  }
+
   return (
     <div className={classes.relatedProducts}>
-      {introContent && (
+      {/* {introContent && (
         <Gutter className={classes.introContent}>
           <RichText content={introContent} />
         </Gutter>
-      )}
+      )} */}
+      <hr className={classes.hr}/>
+      <p className={classes.relatedProducts}>منتجات ذات صلة</p>
       <Gutter>
         <div className={classes.grid}>
           {docs?.map((doc, index) => {
-            if (typeof doc === 'string') return null
-
+            if (typeof doc === 'string') {
+              console.log('Skipped string doc:', doc); // إضافة رسالة تصحيحية
+              return null;
+            }
+            
             return (
-              <div
-                key={index}
-                className={[
-                  classes.column,
-                  docs.length === 2 && classes['cols-half'],
-                  docs.length >= 3 && classes['cols-thirds'],
-                ]
-                  .filter(Boolean)
-                  .join(' ')}
-              >
-                <Card relationTo={relationTo} doc={doc} showCategories />
-              </div>
+              <Card key={doc.id} relationTo={relationTo} doc={doc} showCategories />
             )
           })}
         </div>

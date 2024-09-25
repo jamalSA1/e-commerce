@@ -26,8 +26,8 @@ export const ThemeProvider: React.FC<{ children?: React.ReactNode }> = ({ childr
       if (implicitPreference) setThemeState(implicitPreference)
     } else {
       setThemeState(themeToSet)
-      window.localStorage.setItem(themeLocalStorageKey, themeToSet)
-      document.documentElement.setAttribute('data-theme', themeToSet)
+      window.localStorage.setItem(themeLocalStorageKey, defaultTheme)
+      document.documentElement.setAttribute('data-theme', defaultTheme)
     }
   }, [])
 

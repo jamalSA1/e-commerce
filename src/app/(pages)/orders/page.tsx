@@ -17,7 +17,7 @@ import classes from './index.module.scss'
 export default async function Orders() {
   const { token } = await getMeUser({
     nullUserRedirect: `/login?error=${encodeURIComponent(
-      'You must be logged in to view your orders.',
+      'يجب أن تكون مسجل الدخول لكي تتمكن من عرض طلباتك.',
     )}&redirect=${encodeURIComponent('/orders')}`,
   })
 
@@ -48,9 +48,9 @@ export default async function Orders() {
 
   return (
     <Gutter className={classes.orders}>
-      <h1>Orders</h1>
+      <h1>طلباتي</h1>
       {(!orders || !Array.isArray(orders) || orders?.length === 0) && (
-        <p className={classes.noOrders}>You have no orders.</p>
+        <p className={classes.noOrders}>ليس لديك طلبات.</p>
       )}
       <RenderParams />
       {orders && orders.length > 0 && (
@@ -59,24 +59,26 @@ export default async function Orders() {
             <li key={order.id} className={classes.listItem}>
               <Link className={classes.item} href={`/orders/${order.id}`}>
                 <div className={classes.itemContent}>
-                  <h4 className={classes.itemTitle}>{`Order ${order.id}`}</h4>
+                  <h4 className={classes.itemTitle}>{`الطلب ${order.id}`}</h4>
                   <div className={classes.itemMeta}>
-                    <p>{`Ordered On: ${formatDateTime(order.createdAt)}`}</p>
+                    <p>{`تم الطلب في: ${formatDateTime(order.createdAt)}`}</p>
                     <p>
-                      {'Total: '}
-                      {new Intl.NumberFormat('en-US', {
+                      {'المجموع: '}
+                      {new Intl.NumberFormat('ar-SA', {
                         style: 'currency',
-                        currency: 'usd',
+                        currency: 'SAR',
                       }).format(order.total / 100)}
                     </p>
                   </div>
                 </div>
+                <div>
                 <Button
                   appearance="secondary"
-                  label="View Order"
+                  label="عرض الطلب"
                   className={classes.button}
                   el="button"
-                />
+                  />
+                  </div>
               </Link>
               {index !== orders.length - 1 && <HR />}
             </li>
@@ -84,16 +86,16 @@ export default async function Orders() {
         </ul>
       )}
       <HR />
-      <Button href="/account" appearance="primary" label="Go to account" />
+      <Button href="/account" appearance="primary" label="الذهاب إلى الحساب" />
     </Gutter>
   )
 }
 
 export const metadata: Metadata = {
-  title: 'Orders',
-  description: 'Your orders.',
+  title: 'طلباتي',
+  description: 'عرض طلباتك.',
   openGraph: mergeOpenGraph({
-    title: 'Orders',
+    title: 'طلباتي',
     url: '/orders',
   }),
 }

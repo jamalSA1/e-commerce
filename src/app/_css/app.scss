@@ -5,8 +5,8 @@
 
 :root {
   --base: 24px;
-  --font-body: system-ui;
-  --font-mono: 'Roboto Mono', monospace;
+  --font-body: 'Jost', sans-serif;
+  --font-jost: 'Jost', sans-serif;
 
   --gutter-h: 180px;
   --block-padding: 120px;
@@ -20,6 +20,11 @@
     --gutter-h: 24px;
     --block-padding: 60px;
   }
+
+  // تعيين الألوان الافتراضية للثيم الفاتح
+  --theme-bg: var(--color-light-bg);
+  --color-dark-500: var(--color-light-text);
+  --color-base-800: var(--color-light-base);
 }
 
 * {
@@ -28,13 +33,20 @@
 
 html {
   @extend %body;
-  background: var(--theme-bg);
+  background: var(--color-light-bg);
   -webkit-font-smoothing: antialiased;
-  opacity: 0;
+  color: var(--color-light-text);
 
-  &[data-theme=dark],
+  &[data-theme=dark] {
+    background: var(--color-dark-bg);
+    color: var(--color-dark-text);
+    --color-base-800: var(--color-dark-base);
+  }
+
   &[data-theme=light] {
-    opacity: initial;
+    background: var(--color-light-bg);
+    color: var(--color-light-text);
+    --color-base-800: var(--color-light-base);
   }
 }
 
@@ -45,19 +57,27 @@ body,
 }
 
 body {
-  font-family: var(--font-body);
+  font-family: var(--font-jost);
   margin: 0;
-  color: var(--theme-text);
+  padding: 0;
+  color: var(--color-light-text);
+
+  display: flex;
+  flex-flow: column;
+}
+
+.main {
+  flex: 1 1 auto;
 }
 
 ::selection {
-  background: var(--theme-success-500);
-  color: var(--color-base-800);
+  background: var(--color-light-500);
+  color: var(--color-base-100);
 }
 
 ::-moz-selection {
-  background: var(--theme-success-500);
-  color: var(--color-base-800);
+  background: var(--color-light-950);
+  color: var(--color-base-100);
 }
 
 img {
@@ -91,21 +111,19 @@ h6 {
 }
 
 p {
-  margin: var(--base) 0;
-
-  @include mid-break {
-    margin: calc(var(--base) * .75) 0;
-  }
+  margin: 0;
 }
 
 ul,
 ol {
-  padding-left: var(--base);
-  margin: 0 0 var(--base);
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 a {
-  color: currentColor;
+  text-decoration: none;
+  color: var(--color-dark-500);
 
   &:focus {
     opacity: .8;

@@ -11,3 +11,12 @@
   flex-wrap: wrap;
   gap: var(--base);
 }
+.payBtn{
+  background-color: black;
+  color: white;
+}
+.backBtn{
+  background-color: white;
+  color: #000;
+  border: 1px solid black;
+}

@@ -1,0 +1,10 @@
+{
+	"plugins": ["validate-jsx-nesting"],
+	"rules": {
+	"validate-jsx-nesting/no-invalid-jsx-nesting": "error",
+	"extends": [
+    "prettier"
+  ]
+}
+
+}

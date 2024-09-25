@@ -1,22 +1,31 @@
 @import "../../../_css/common";
 
 .form {
+  margin-top: 30px;
   margin-bottom: var(--base);
   display: flex;
   flex-direction: column;
-  gap: calc(var(--base) / 2);
+  gap: 24px;
   align-items: flex-start;
-  width: 66.66%;
-
-  @include mid-break {
-    width: 100%;
-  }
+  width: 100%;
+  text-align: end;
 }
 
 .submit {
-  margin-top: calc(var(--base) / 2);
+  width: 100%;
+  background-color: rgb(30, 29, 29);
+  color: white;
+}
+.submit:hover {
+  background-color: rgb(15, 14, 14);
 }
 
 .message {
   margin-bottom: var(--base);
+}
+
+.links {
+  margin-top: calc(var(--base) / 2);
+  text-align: end;
+  width: 100%;
 }

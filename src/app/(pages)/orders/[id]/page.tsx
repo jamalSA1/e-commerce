@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
-import { Order } from '../../../../payload/payload-types'
+import type { Order } from '../../../../payload/payload-types'
 import { Button } from '../../../_components/Button'
 import { Gutter } from '../../../_components/Gutter'
 import { HR } from '../../../_components/HR'
@@ -18,7 +18,7 @@ import classes from './index.module.scss'
 export default async function Order({ params: { id } }) {
   const { token } = await getMeUser({
     nullUserRedirect: `/login?error=${encodeURIComponent(
-      'You must be logged in to view this order.',
+      'يجب أن تكون مسجل الدخول لكي تتمكن من عرض هذا الطلب.',
     )}&redirect=${encodeURIComponent(`/order/${id}`)}`,
   })
 
@@ -48,24 +48,24 @@ export default async function Order({ params: { id } }) {
   return (
     <Gutter className={classes.orders}>
       <h1>
-        {`Order`}
+        {'الطلب'}
         <span className={classes.id}>{`${order.id}`}</span>
       </h1>
       <div className={classes.itemMeta}>
         <p>{`ID: ${order.id}`}</p>
         <p>{`Payment Intent: ${order.stripePaymentIntentID}`}</p>
-        <p>{`Ordered On: ${formatDateTime(order.createdAt)}`}</p>
+        <p>{`تم الطلب في: ${formatDateTime(order.createdAt)}`}</p>
         <p className={classes.total}>
-          {'Total: '}
-          {new Intl.NumberFormat('en-US', {
+          {'المجموع: '}
+          {new Intl.NumberFormat('ar-SA', {
             style: 'currency',
-            currency: 'usd',
+            currency: 'SAR',
           }).format(order.total / 100)}
         </p>
       </div>
       <HR />
       <div className={classes.order}>
-        <h4 className={classes.orderItems}>Items</h4>
+        <h4 className={classes.orderItems}>المنتجات</h4>
         {order.items?.map((item, index) => {
           if (typeof item.product === 'object') {
             const {
@@ -79,27 +79,29 @@ export default async function Order({ params: { id } }) {
             const metaImage = meta?.image
 
             return (
-              <Fragment key={index}>
+              <div key={index}>
                 <div className={classes.row}>
                   <Link href={`/products/${product.slug}`} className={classes.mediaWrapper}>
-                    {!metaImage && <span className={classes.placeholder}>No image</span>}
+                    {!metaImage && <span className={classes.placeholder}>لا يوجد صورة</span>}
                     {metaImage && typeof metaImage !== 'string' && (
+                      <div>
                       <Media
                         className={classes.media}
                         imgClassName={classes.image}
                         resource={metaImage}
                         fill
-                      />
+                        />
+                        </div>
                     )}
                   </Link>
                   <div className={classes.rowContent}>
                     {!stripeProductID && (
                       <p className={classes.warning}>
-                        {'This product is not yet connected to Stripe. To link this product, '}
+                        {'هذا المنتج لم يتم ربطه بالستريپ بعد. لربط هذا المنتج، '}
                         <Link
                           href={`${process.env.NEXT_PUBLIC_SERVER_URL}/admin/collections/products/${id}`}
                         >
-                          edit this product in the admin panel
+                          عدل هذا المنتج في لوحة التحكم
                         </Link>
                         {'.'}
                       </p>
@@ -109,12 +111,12 @@ export default async function Order({ params: { id } }) {
                         {title}
                       </Link>
                     </h5>
-                    <p>{`Quantity: ${quantity}`}</p>
+                    <p>{`الكمية: ${quantity}`}</p>
                     <Price product={product} button={false} quantity={quantity} />
                   </div>
                 </div>
                 {!isLast && <HR />}
-              </Fragment>
+              </div>
             )
           }
 
@@ -123,8 +125,8 @@ export default async function Order({ params: { id } }) {
       </div>
       <HR />
       <div className={classes.actions}>
-        <Button href="/orders" appearance="primary" label="See all orders" />
-        <Button href="/account" appearance="secondary" label="Go to account" />
+        <Button href="/orders" appearance="primary" label="عرض جميع الطلبات" />
+        <Button href="/account" appearance="secondary" label="الذهاب إلى الحساب" />
       </div>
     </Gutter>
   )
@@ -132,10 +134,10 @@ export default async function Order({ params: { id } }) {
 
 export async function generateMetadata({ params: { id } }): Promise<Metadata> {
   return {
-    title: `Order ${id}`,
-    description: `Order details for order ${id}.`,
+    title: `الطلب ${id}`,
+    description: `تفاصيل الطلب ${id}.`,
     openGraph: mergeOpenGraph({
-      title: `Order ${id}`,
+      title: `الطلب ${id}`,
       url: `/orders/${id}`,
     }),
   }

@@ -1,0 +1,98 @@
+@import '../../_css/queries.scss';
+
+.hero {
+  // position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  margin: 50px 20px 0px 70px;
+  border-radius: 30px;
+  
+  @media (max-width: 600px) {
+    margin-top: 0px;
+    margin: 20px 10px;
+    height: 340px;
+  }
+}
+
+.heroWrapper {
+  width: 100%;
+  height: 400px;
+  max-width: 1560px;
+  // max-height: 950px;
+  display: flex;
+  align-items: center;
+  opacity: 0.7;
+  // object-fit: cover;
+  background-size: cover;
+  background-position: revert;
+  background-repeat: no-repeat;
+  margin-top: 45px;
+  background-size: cover;
+  
+  @include small-break {
+    background-position: center;
+  }
+}
+
+.heroTextBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 15% var(--gutter-h);
+  text-align: center;
+  width: 100%;
+
+  @include mid-break {
+    padding: 10% 30px;
+  }
+
+  @include small-break {
+    padding: 50px 30px;
+  }
+
+  h2 {
+    font-size: 70px;
+    margin: 32px 0;
+
+    @include mid-break {
+      font-size: 48px;
+      margin: 24px 0;
+      white-space: wrap;
+    }
+
+    @include small-break {
+      width: 70%;
+      font-size: 36px;
+      margin: 8px 0;
+    }
+  }
+
+  p {
+    font-size: 30px;
+
+    @include mid-break {
+      font-size: 24px;
+    }
+
+    @include small-break {
+      font-size: 18px;
+    }
+  }
+}
+
+.links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  padding-top: 50px;
+  flex-wrap: wrap;
+  margin: calc(var(--base) * -0.5);
+
+  & > * {
+    margin: calc(var(--base) / 2);
+  }
+}

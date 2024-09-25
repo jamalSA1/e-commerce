@@ -10,6 +10,7 @@ import classes from './index.module.scss'
 export const ArchiveBlock: React.FC<
   ArchiveBlockProps & {
     id?: string
+    sort: string
   }
 > = props => {
   const {
@@ -21,6 +22,7 @@ export const ArchiveBlock: React.FC<
     populatedDocs,
     populatedDocsTotal,
     selectedDocs,
+    sort,
     categories,
   } = props
 
@@ -39,7 +41,8 @@ export const ArchiveBlock: React.FC<
         selectedDocs={selectedDocs}
         categories={categories}
         limit={limit}
-        sort="-publishedOn"
+        // sort="-publishedOn"
+        key={id}
       />
     </div>
   )

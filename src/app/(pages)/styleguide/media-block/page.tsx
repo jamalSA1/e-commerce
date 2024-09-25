@@ -24,7 +24,7 @@ export default async function MediaBlockPage() {
         <br />
         <br />
         <MediaBlock
-          position="fullscreen"
+          position="default"
           blockType="mediaBlock"
           media=""
           staticImage={staticImage}

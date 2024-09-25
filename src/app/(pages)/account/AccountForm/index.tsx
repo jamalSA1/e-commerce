@@ -53,7 +53,7 @@ const AccountForm: React.FC = () => {
         if (response.ok) {
           const json = await response.json()
           setUser(json.doc)
-          setSuccess('Successfully updated account.')
+          setSuccess('تم تحديث الحساب بنجاح.')
           setError('')
           setChangePassword(false)
           reset({
@@ -63,7 +63,7 @@ const AccountForm: React.FC = () => {
             passwordConfirm: '',
           })
         } else {
-          setError('There was a problem updating your account.')
+          setError('حدثت مشكلة أثناء تحديث حسابك.')
         }
       }
     },
@@ -74,7 +74,7 @@ const AccountForm: React.FC = () => {
     if (user === null) {
       router.push(
         `/login?error=${encodeURIComponent(
-          'You must be logged in to view this page.',
+          'يجب أن تكون مسجل الدخول لكي تتمكن من عرض هذه الصفحة.',
         )}&redirect=${encodeURIComponent('/account')}`,
       )
     }
@@ -95,44 +95,45 @@ const AccountForm: React.FC = () => {
       <Message error={error} success={success} className={classes.message} />
       {!changePassword ? (
         <Fragment>
-          <p>
-            {'Change your account details below, or '}
-            <button
-              type="button"
-              className={classes.changePassword}
-              onClick={() => setChangePassword(!changePassword)}
-            >
-              click here
-            </button>
-            {' to change your password.'}
-          </p>
           <Input
             name="email"
-            label="Email Address"
+            label="عنوان البريد الإلكتروني"
             required
             register={register}
             error={errors.email}
             type="email"
           />
-          <Input name="name" label="Name" register={register} error={errors.name} />
-        </Fragment>
-      ) : (
-        <Fragment>
+          <Input name="name" label="الاسم" register={register} error={errors.name} />
+
           <p>
-            {'Change your password below, or '}
+            {'قم بتغيير تفاصيل حسابك، أو '}
             <button
               type="button"
               className={classes.changePassword}
               onClick={() => setChangePassword(!changePassword)}
             >
-              cancel
+              انقر هنا
+            </button>
+            {' لكي تغير كلمة المرور.'}
+          </p>
+        </Fragment>
+      ) : (
+        <Fragment>
+          <p>
+            {'قم بتغيير كلمة المرور أدناه، أو '}
+            <button
+              type="button"
+              className={classes.changePassword}
+              onClick={() => setChangePassword(!changePassword)}
+            >
+              إلغاء
             </button>
             .
           </p>
           <Input
             name="password"
             type="password"
-            label="Password"
+            label="كلمة المرور"
             required
             register={register}
             error={errors.password}
@@ -140,17 +141,17 @@ const AccountForm: React.FC = () => {
           <Input
             name="passwordConfirm"
             type="password"
-            label="Confirm Password"
+            label="تأكيد كلمة المرور"
             required
             register={register}
-            validate={value => value === password.current || 'The passwords do not match'}
+            validate={value => value === password.current || 'كلمات المرور لا تتطابق'}
             error={errors.passwordConfirm}
           />
         </Fragment>
       )}
       <Button
         type="submit"
-        label={isLoading ? 'Processing' : changePassword ? 'Change Password' : 'Update Account'}
+        label={isLoading ? 'جاري المعالجة' : changePassword ? 'تغيير كلمة المرور' : 'تحديث الحساب'}
         disabled={isLoading}
         appearance="primary"
         className={classes.submit}

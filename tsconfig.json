@@ -31,7 +31,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-  ],
+, "eslint-config-next", "src/app/_components/Card/index.jsx"  ],
   "exclude": [
     "node_modules"
   ],

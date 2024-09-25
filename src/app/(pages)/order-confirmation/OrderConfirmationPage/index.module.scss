@@ -2,6 +2,18 @@
 
 .actions {
   display: flex;
+  margin-top: 30px;
+  justify-content: center;
   flex-wrap: wrap;
   gap: calc(var(--base) / 2);
+}
+
+.order{
+  background-color: black;
+  color: white;
+}
+.orders{
+  background-color: white;
+  color: #000;
+  border: 1px solid black;
 }

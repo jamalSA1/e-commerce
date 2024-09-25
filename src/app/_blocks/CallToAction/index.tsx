@@ -7,6 +7,7 @@ import RichText from '../../_components/RichText'
 import { VerticalPadding } from '../../_components/VerticalPadding'
 
 import classes from './index.module.scss'
+import { RelatedProducts } from '../RelatedProducts'
 
 type Props = Extract<Page['layout'][0], { blockType: 'cta' }>
 
@@ -17,7 +18,8 @@ export const CallToActionBlock: React.FC<
 > = ({ links, richText, invertBackground }) => {
   return (
     <Gutter>
-      <VerticalPadding
+      <div></div>
+      {/* <VerticalPadding
         className={[classes.callToAction, invertBackground && classes.invert]
           .filter(Boolean)
           .join(' ')}
@@ -32,7 +34,7 @@ export const CallToActionBlock: React.FC<
             })}
           </div>
         </div>
-      </VerticalPadding>
+      </VerticalPadding> */}
     </Gutter>
   )
 }

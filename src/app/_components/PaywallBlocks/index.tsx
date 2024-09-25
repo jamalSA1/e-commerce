@@ -83,11 +83,11 @@ export const PaywallBlocks: React.FC<{
           <Message
             message={
               <>
-                {`This content is gated behind a paywall. You must be `}
+                {`هذا المحتوى محمي وراء جدار الدفع. يجب أن تكون `}
                 <Link href={`/login?redirect=${encodeURIComponent(window.location.pathname)}`}>
-                  logged in
+                  مسجل الدخول
                 </Link>
-                {` as an admin or have purchased this product to view this content.`}
+                {` كمسؤول أو قد اشتريت هذا المنتج لعرض هذا المحتوى.`}
               </>
             }
           />
@@ -110,7 +110,7 @@ export const PaywallBlocks: React.FC<{
     return (
       <Gutter>
         <VerticalPadding bottom="large" top="none">
-          <Message message="Purchase this product to unlock the content." />
+          <Message message="قم بشراء هذا المنتج لفتح المحتوى." />
         </VerticalPadding>
       </Gutter>
     )

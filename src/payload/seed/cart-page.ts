@@ -7,7 +7,7 @@ export const cartPage: Partial<Page> = {
   meta: {
     title: 'Cart',
     description:
-      'Your cart will sync to your user profile so you can continue shopping from any device.',
+      'ستزامن عربتك مع ملفك الشخصي لكي تتمكن من مواصلة التسوق من أي جهاز.',
   },
   hero: {
     type: 'lowImpact',
@@ -18,7 +18,7 @@ export const cartPage: Partial<Page> = {
         type: 'h1',
         children: [
           {
-            text: 'Cart',
+            text: 'عربة التسوق',
           },
         ],
       },
@@ -26,7 +26,7 @@ export const cartPage: Partial<Page> = {
         type: 'p',
         children: [
           {
-            text: 'This cart saves to local storage so you can continue shopping later. Once you authenticate with Payload, your cart will sync to your user profile so you can continue shopping from any device. This hero and the content below the cart are completely dynamic and ',
+            text: 'هذه العربة تُحفظ في التخزين المحلي لكي تتمكن من مواصلة التسوق لاحقاً. بمجرد أن تُصادق مع Payload، ستزامن عربتك مع ملفك الشخصي لكي تتمكن من مواصلة التسوق من أي جهاز. هذا البطل والمحتوى أسفل العربة كلهما ديناميكيان تماماً و',
           },
           {
             type: 'link',
@@ -34,7 +34,7 @@ export const cartPage: Partial<Page> = {
             url: '/admin',
             children: [
               {
-                text: 'configured in the admin dashboard',
+                text: 'مُتاحاً في لوحة التحكم الإدارية',
               },
             ],
           },
@@ -58,7 +58,7 @@ export const cartPage: Partial<Page> = {
             {
               children: [
                 {
-                  text: 'This is a custom layout building block configurable in the CMS—this can be anything you want. Related or suggested products, a blog post, video, etc.',
+                  text: 'هذا هو كتلة بناء تصميم مخصصة قابلة للتكوين في نظام إدارة المحتوى—هذا يمكن أن يكون أي شيء تريد. منتجات متعلقة أو مقترحة، منشور في المدونة، فيديو، الخ.',
                 },
               ],
             },
@@ -79,7 +79,7 @@ export const cartPage: Partial<Page> = {
         {
           children: [
             {
-              text: 'This is a custom layout building block ',
+              text: 'هذا هو كتلة بناء تصميم مخصصة ',
             },
             {
               type: 'link',
@@ -87,7 +87,7 @@ export const cartPage: Partial<Page> = {
               url: '/admin',
               children: [
                 {
-                  text: 'configured in the admin dashboard',
+                  text: 'مُتاحاً في لوحة التحكم الإدارية',
                 },
               ],
             },
@@ -106,7 +106,7 @@ export const cartPage: Partial<Page> = {
               relationTo: 'pages',
               value: '{{PRODUCTS_PAGE_ID}}',
             },
-            label: 'Continue shopping',
+            label: 'متابعة التسوق',
             appearance: 'primary',
           },
         },
